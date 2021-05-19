@@ -57,10 +57,11 @@ extractShipFiles_NOTHING_ELSE = 0
 create_FINAL_FILE_AAQS_NOTHING_ELSE = 0
 create_FINAL_FILE_LayUp_NOTHING_ELSE = 1
 create_FINAL_FILE_LayUp_NOTHING_ELSE_including_averagesForPBI = 1
+
 # this date defines the starting point for the calculation of the power demand averages.
 # from time to time we can be increased a bit to save some calculation time
 #0 = cut times out of master file // 1 = do a full new run, takes few hours
-createCompletelyNewFileWithAllHistory = 1
+createCompletelyNewFileWithAllHistory = 0
 eraseAllPBIDateFromThisTimeOnwardsAndCreateNewAverages = datetime.datetime(2020, 11, 10, 0, 0, 0)
 
 
@@ -75,9 +76,14 @@ erase_allDataIncludingThisDay = datetime.datetime(2020, 11, 20, 0, 0, 0)
 
 #region create new pbi file for curve comparison based on two files
 ONLY_THIS_MergeTheseFilesTogetherToSaveTime = 0
-masterFile_LayUp_ALL_PowerDataForPBICurves = r'C:\Users\500095\Desktop\Lay Up Energy Monitoring\02_FinalFiles\PBI_LayUpFinalFile_PORT_ONLY_PowerOnlyPBICurve.csv'
-OLD_masterFile_LayUp_ALL_PowerDataForPBICurves = r'C:\Users\500095\Desktop\Lay Up Energy Monitoring\02_FinalFiles\BA_PBI_LayUpFinalFile_PORT_ONLY_PowerOnlyPBICurve.csv'
-NEW_masterFile_LayUp_ALL_PowerDataForPBICurves = r'C:\Users\500095\Desktop\Lay Up Energy Monitoring\02_FinalFiles\NEW_PBI_LayUpFinalFile_PORT_ONLY_PowerOnlyPBICurve.csv'
+# masterFile_LayUp_ALL_PowerDataForPBICurves = r'C:\Users\500095\Desktop\Lay Up Energy Monitoring\02_FinalFiles\PBI_LayUpFinalFile_PORT_ONLY_PowerOnlyPBICurve.csv'
+# OLD_masterFile_LayUp_ALL_PowerDataForPBICurves = r'C:\Users\500095\Desktop\Lay Up Energy Monitoring\02_FinalFiles\BA_PBI_LayUpFinalFile_PORT_ONLY_PowerOnlyPBICurve.csv'
+# NEW_masterFile_LayUp_ALL_PowerDataForPBICurves = r'C:\Users\500095\Desktop\Lay Up Energy Monitoring\02_FinalFiles\NEW_PBI_LayUpFinalFile_PORT_ONLY_PowerOnlyPBICurve.csv'
+
+masterFile_LayUp_ALL_PowerDataForPBICurves =	 r'E:\001_CMG\Lay Up Energy Monitoring\02_FinalFiles\PBI_LayUpFinalFile_PORT_ONLY_PowerOnlyPBICurve.csv'
+OLD_masterFile_LayUp_ALL_PowerDataForPBICurves = r'E:\001_CMG\Lay Up Energy Monitoring\02_FinalFiles\BA_PBI_LayUpFinalFile_PORT_ONLY_PowerOnlyPBICurve.csv'
+NEW_masterFile_LayUp_ALL_PowerDataForPBICurves = r'E:\001_CMG\Lay Up Energy Monitoring\02_FinalFiles\NEW_PBI_LayUpFinalFile_PORT_ONLY_PowerOnlyPBICurve.csv'
+
 #endregion
 
 #region VARSs LayUp & AAQS
@@ -85,18 +91,18 @@ NEW_masterFile_LayUp_ALL_PowerDataForPBICurves = r'C:\Users\500095\Desktop\Lay U
 dict_rawDataStructure = {
 	"sourceDataStructure_neptuneLab_RawData": 				0
 	,"sourceDataStructure_neptuneLab_preparedAverages": 	0
-	,"sourceDataStructure_PBI_preparedColumns": 				1
+	,"sourceDataStructure_PBI_preparedColumns": 			1
 }
 
 dict_MASTER_WHAT_TO_DO = {
 	"master_prepareRawData": 				0
-	,"master_analyseData_AAQS_DAILY": 	0
-	,"master_analyseData_LayUp": 			1
+	,"master_analyseData_AAQS_DAILY": 		1
+	,"master_analyseData_LayUp": 			0
 }
 
 dict_PREPARE_RAW_DATA_FOR___ = {
-	'DATA_APPROACH_AAQS_DAILY': 				0
-	,'DATA_APPROACH_LayUpPowerManagement':	1
+	'DATA_APPROACH_AAQS_DAILY': 			1
+	,'DATA_APPROACH_LayUpPowerManagement':	0
 }
 
 dict_DO_ALL_MANDATORY_STEPs_FOR_NEW_DATASET = {
@@ -193,14 +199,14 @@ dict_mandatoryForNewData_fillFuelTypePerEngineRunning = {
 	masterFlagAnalysisMode_LayUp: 0
 }
 dict_ERASE_ALL_PREVIOUS_FuelTypePerEngines = {
-	masterFlagAnalysisMode_AAQS: 1, # reset to 0 if nothing in the data or the algo was changed
-	masterFlagAnalysisMode_LayUp: 1  # reset to 0 if nothing in the data or the algo was changed
+	masterFlagAnalysisMode_AAQS: 0, # reset to 0 if nothing in the data or the algo was changed
+	masterFlagAnalysisMode_LayUp: 0  # reset to 0 if nothing in the data or the algo was changed
 }
 
 # ###########################################################################
 # WRONG FUEL USED?
 dict_fillMissingRedFlagsForWrongFuel = {
-	masterFlagAnalysisMode_AAQS: 0,
+	masterFlagAnalysisMode_AAQS: 0, # reset to 0 if nothing in the data or the algo was changed
 	masterFlagAnalysisMode_LayUp: 0
 }
 
@@ -211,7 +217,7 @@ dict_mandatoryForNewData_fillMissedAAQSOpportunitiesDuringPortStay = {
 	masterFlagAnalysisMode_LayUp: 0
 }
 dict_ERASE_ALL_PREVIOUS_AAQS_PORT_ASSESSMENTS = {
-	masterFlagAnalysisMode_AAQS: 0,
+	masterFlagAnalysisMode_AAQS: 0, # reset to 0 if nothing in the data or the algo was changed
 	masterFlagAnalysisMode_LayUp: 0
 }
 
@@ -222,7 +228,7 @@ dict_mandatoryForNewData_fillMissedAAQSOpportunitiesDuringNavigation = {
 	masterFlagAnalysisMode_LayUp: 0
 }
 dict_ERASE_ALL_PREVIOUS_AAQS_ASSESSMENTS = {
-	masterFlagAnalysisMode_AAQS: 0,
+	masterFlagAnalysisMode_AAQS: 0, # reset to 0 if nothing in the data or the algo was changed
 	masterFlagAnalysisMode_LayUp: 0
 }
 
@@ -397,7 +403,7 @@ def func_createFeedbackFileBasedOnSingleShips(
 			lastUsefulFlag_C1 = ""
 			for ap in dfThisShip.index:
 				if dfThisShip.loc[ap, flag_shipFeedback_C1_MainSystem] == 'empty':
-					if lastUsefulFlag_C1 is not "":
+					if lastUsefulFlag_C1 != "":
 						dfThisShip.loc[ap, flag_shipFeedback_C1_MainSystem] = lastUsefulFlag_C1
 				else:
 					lastUsefulFlag_C1 = dfThisShip.loc[ap, flag_shipFeedback_C1_MainSystem]
@@ -467,13 +473,18 @@ def func_readAllShipFilesInThisFolder(
 	
 	if create_FINAL_FILE_LayUp_NOTHING_ELSE:
 		filesToBeTreated = filedialog.askopenfilenames(
-			initialdir="C:\\Users\\500095\\Desktop\\Lay Up Energy Monitoring\\02_FinalFiles\\SHIP_FILES")
+			# initialdir="C:\\Users\\500095\\Desktop\\Lay Up Energy Monitoring\\02_FinalFiles\\SHIP_FILES"
+			initialdir="E:\\001_CMG\\Lay Up Energy Monitoring\\02_FinalFiles\SHIP_FILES"
+		)
 	elif create_FINAL_FILE_AAQS_NOTHING_ELSE:
 		filesToBeTreated = filedialog.askopenfilenames(
-			initialdir="C:\\Users\\500095\\Desktop\\AAQS_FullTransparency\\Python_Code\\02_AAQS_FinalFiles\\SHIP_FILES")
+			# initialdir="C:\\Users\\500095\\Desktop\\AAQS_FullTransparency\\Python_Code\\02_AAQS_FinalFiles\\SHIP_FILES"
+			initialdir="E:\\001_CMG\\AAQS_FullTransparency\\02_AAQS_FinalFiles\\SHIP_FILES"
+		)
 	elif EngineRunningHours_Step02_createFinalFileForPBI:
 		filesToBeTreated = filedialog.askopenfilenames(
-			initialdir="C:\\Users\\500095\\Desktop\\Engine Running Hours\\02_FinalFiles\SHIP_FILES")
+			initialdir="C:\\Users\\500095\\Desktop\\Engine Running Hours\\02_FinalFiles\SHIP_FILES"
+		)
 	else:
 		filesToBeTreated = filedialog.askopenfilenames()
 	
@@ -1145,14 +1156,14 @@ def func_updateSeaStateDependingOfAdvancedAnchorageAlgo(
 	dfInput.loc[ \
 		(dfInput[flag_finalFile_typeOfSailing] == flag_typeOfSailing_Sailing) &
 		(dfInput[flag_finalFile_DriftingAnchorage] == flag_typeOfSailing_Anchorage) &
-		(dfInput[flag_finalFile_SOG_GAP_Filled] is not "Changed Type Of Sailing"),
+		(dfInput[flag_finalFile_SOG_GAP_Filled] != "Changed Type Of Sailing"),
 		flag_finalFile_SOG_GAP_Filled
 	] = "CHANGED to Port bcs of Anchorage"
 	
 	dfInput.loc[ \
 		(dfInput[flag_finalFile_typeOfSailing] == flag_typeOfSailing_Sailing) &
 		(dfInput[flag_finalFile_DriftingAnchorage] == flag_typeOfSailing_Anchorage) &
-		(dfInput[flag_finalFile_SOG_GAP_Filled] is not "Changed Type Of Sailing"),
+		(dfInput[flag_finalFile_SOG_GAP_Filled] != "Changed Type Of Sailing"),
 		flag_finalFile_typeOfSailing
 	] = flag_typeOfSailing_Port
 	#endregion
@@ -1161,14 +1172,14 @@ def func_updateSeaStateDependingOfAdvancedAnchorageAlgo(
 	dfInput.loc[ \
 		(dfInput[flag_finalFile_typeOfSailing] == flag_typeOfSailing_Port) &
 		(dfInput[flag_finalFile_DriftingAnchorage] == flag_typeOfSailing_Drifting) &
-		(dfInput[flag_finalFile_SOG_GAP_Filled] is not "Changed Type Of Sailing"),
+		(dfInput[flag_finalFile_SOG_GAP_Filled] != "Changed Type Of Sailing"),
 		flag_finalFile_SOG_GAP_Filled
 	] = "CHANGED to Sailing bcs of Drifting"
 	
 	dfInput.loc[ \
 		(dfInput[flag_finalFile_typeOfSailing] == flag_typeOfSailing_Port) &
 		(dfInput[flag_finalFile_DriftingAnchorage] == flag_typeOfSailing_Drifting) &
-		(dfInput[flag_finalFile_SOG_GAP_Filled] is not "Changed Type Of Sailing"),
+		(dfInput[flag_finalFile_SOG_GAP_Filled] != "Changed Type Of Sailing"),
 		flag_finalFile_typeOfSailing
 	] = flag_typeOfSailing_Sailing
 	
@@ -1222,33 +1233,39 @@ def func_analyseAnchorageDrifting(
 		timeSlicesBetweenDistance = 5
 		
 		for ap in dfInput.index:
-			# if dfInput.loc[ap, flag_finalFile_DistanceThisSlice] == '':
-			if ap > timeSlicesBetweenDistance:
-				
-				if func_divisonPossible(ap, progressPrintCounter):
-					func_printProgress(ap, 0, maxIndex, inspect.stack()[0][3])
-					
-				if not dict_ERASE_ALL_PREVIOUS_DriftingAnchorageData[analysisType]:
-					if firstIndexWithoutDistance == 0:
-						print("Oh YEA, here it starts ... there is no distance @ " + str(ap))
-						firstIndexWithoutDistance = ap
-				
-				thisDistance = 0
-				
-				if \
-					abs(dfInput.loc[ap, flag_finalFile_Latitude]) - \
-						abs(dfInput.loc[ap - timeSlicesBetweenDistance, flag_finalFile_Latitude]) > 0.0005:
+			if pd.isnull(dfInput.loc[ap, flag_finalFile_DistanceThisSlice]):
+				if ap > timeSlicesBetweenDistance:
+
+					# if pd.isnull(dfInput.loc[ap, flag_finalFile_DistanceThisSlice]):
+					# 	print("YES, THIS IS NAN @ " + str(ap))
+					# else:
+					# 	print("this is not nan @ " + str(ap) + " = " + str(dfInput.loc[ap, flag_finalFile_DistanceThisSlice]))
+
+					if func_divisonPossible(ap, progressPrintCounter):
+						func_printProgress(ap, 0, maxIndex, inspect.stack()[0][3])
+
+					if not dict_ERASE_ALL_PREVIOUS_DriftingAnchorageData[analysisType]:
+						if firstIndexWithoutDistance == 0:
+							print("Oh YEA, here it starts ... there is no distance @ " + str(ap))
+							firstIndexWithoutDistance = ap
+
+					thisDistance = 0
+
 					if \
-						abs(dfInput.loc[ap, flag_finalFile_Longitude]) - \
-							abs(dfInput.loc[ap - timeSlicesBetweenDistance, flag_finalFile_Longitude]) > 0.0005:
-						
-						origin = (dfInput.loc[ap - timeSlicesBetweenDistance, flag_finalFile_Latitude], dfInput.loc[ap - timeSlicesBetweenDistance , flag_finalFile_Longitude])
-						dist = (dfInput.loc[ap, flag_finalFile_Latitude], dfInput.loc[ap, flag_finalFile_Longitude])
-						
-						thisDistance = gp.geodesic(origin, dist).miles / 1.15078
-				
-				# print("thisDistance" + str(thisDistance))
-				dfInput.loc[ap, flag_finalFile_DistanceThisSlice] = thisDistance
+						abs(dfInput.loc[ap, flag_finalFile_Latitude]) - \
+							abs(dfInput.loc[ap - timeSlicesBetweenDistance, flag_finalFile_Latitude]) > 0.0005:
+						if \
+							abs(dfInput.loc[ap, flag_finalFile_Longitude]) - \
+								abs(dfInput.loc[ap - timeSlicesBetweenDistance, flag_finalFile_Longitude]) > 0.0005:
+
+							origin = (dfInput.loc[ap - timeSlicesBetweenDistance, flag_finalFile_Latitude], dfInput.loc[ap - timeSlicesBetweenDistance , flag_finalFile_Longitude])
+							dist = (dfInput.loc[ap, flag_finalFile_Latitude], dfInput.loc[ap, flag_finalFile_Longitude])
+
+							thisDistance = gp.geodesic(origin, dist).miles / 1.15078
+
+					# print("new thisDistance @ " + str(ap) +  " = " + str(thisDistance))
+					# print("old thisDistance @ " + str(ap) +  " = " + str(dfInput.loc[ap, flag_finalFile_DistanceThisSlice]))
+					dfInput.loc[ap, flag_finalFile_DistanceThisSlice] = thisDistance
 	#endregion
 	
 	print("take the shortcut and only calculate new values beginning from: " + str(firstIndexWithoutDistance))
@@ -3018,7 +3035,7 @@ def func_addAvgEngineLoad(
 	
 	markFrozenStartingFromThisAmountOfSignals = 3
 	
-	if useOnlyThisShip is not '':
+	if useOnlyThisShip != '':
 		totalNansEngineRunningCount = func_getCountOf_NANs_inColumn(
 			dfInput[dfInput[flag_finalFile_Ship] == useOnlyThisShip],
 			flag_finalFile_EnginesRunning
@@ -3140,7 +3157,7 @@ def func_doTheDataSanityCheckForTotalPowerDemand(
 	
 	markFrozenStartingFromThisAmountOfSignals = 3
 	
-	if useOnlyThisShip is not '':
+	if useOnlyThisShip != '':
 		totalNansInSanityCheck = func_getCountOf_NANs_inColumn(
 			dfInput[dfInput[flag_finalFile_Ship] == useOnlyThisShip],
 			flag_finalFile_dataSanity
@@ -3836,7 +3853,7 @@ def f_insertLegNames(
 						firstPortEnd_AP = ap
 						# print("firstPortEnd_AP: " + str(ap))
 					
-		if firstPortEnd_AP > 0 and firstPortName is not '':
+		if firstPortEnd_AP > 0 and firstPortName != '':
 			if lastPortName == '':
 				if len(dfInput.loc[ap, flag_finalFile_legPortName]) > 3:
 					# print("lastPortName: " + lastPortName + " @ " + str(ap))
@@ -4044,16 +4061,17 @@ def f_markMissedOpportunitiesDuringPortStay(
 	# 	print("SHIP NOT READY FOR AAQS in PORT >>> SKIP THIS CHECK")
 	
 	for ap in dfInput.index:
-		if \
-			dfInput.loc[ap, flag_finalFile_Ship] == 'Costa Fascinosa' or \
-			dict_AAQS_available[useOnlyThisShip] == False:
+		if dict_AAQS_available[useOnlyThisShip] == False: # or dfInput.loc[ap, flag_finalFile_Ship] == 'Costa Fascinosa'
 			continue
-		
-		if dfInput.loc[ap, flag_finalFile_Ship] == 'Costa Favolosa':
-			if dfInput.loc[ap, flag_finalFile_legPortName] == 'Civitavecchia (Rome)':
+
+		if dfInput.loc[ap, flag_finalFile_legPortName] == 'Civitavecchia (Rome)':
+			if dfInput.loc[ap, flag_finalFile_Date] >= FullFleet_noMoreAAQSAllowanceInCivi:
+				continue
+
+			if dfInput.loc[ap, flag_finalFile_Ship] == 'Costa Favolosa':
 				if dfInput.loc[ap, flag_finalFile_Date] >= FA_noMoreAAQSAllowanceInCivi:
 					continue
-		
+
 		if dic_AAQS_PlannedForPortUsage[useOnlyThisShip] == 0 and \
 			dfInput.loc[ap, flag_finalFile_Date] < dict_ENV_regulationChange_AllShipsShouldTryAAQSInPort:
 			continue
@@ -4104,7 +4122,7 @@ def func_getIndexRangeForThisShipsDate(
 ):
 	# f_makeThePrintNiceStructured(True, "### GET INDEX RANGE FOR SHIP: " + useOnlyThisShip, inspect.stack()[0][3])
 	
-	if useOnlyThisShip is not '':
+	if useOnlyThisShip != '':
 		subDF = dfInput[dfInput[flag_finalFile_Ship] == useOnlyThisShip]
 	else:
 		subDF = dfInput
@@ -4188,27 +4206,34 @@ def f_markEnginesRunningWithMGOAsPossibleLoss(
 	dfInput,
 	commentFlag
 ):
-	if dfInput.loc[ap, flag_finalFile_fuelType_DG01] == fuel_flag_MGO:
+	if \
+		dfInput.loc[ap, flag_finalFile_fuelType_DG01] == fuel_flag_MGO and \
+		dfInput.loc[ap, flag_finalFile_DG1_LoadPercent] > lowLoadMgoOnlyNoMissedAAQSOpportunityBelowThisLoad:
 		# print(dfInput.loc[ap, flag_finalFile_Ship] + " MISSED AAQS IN PORT FOR DG1")
 		dfInput.loc[ap, flag_finalFile_fuelType_DG01] = commentFlag
 	
-	if dfInput.loc[ap, flag_finalFile_fuelType_DG02] == fuel_flag_MGO:
+	if dfInput.loc[ap, flag_finalFile_fuelType_DG02] == fuel_flag_MGO and \
+		dfInput.loc[ap, flag_finalFile_DG2_LoadPercent] > lowLoadMgoOnlyNoMissedAAQSOpportunityBelowThisLoad:
 		# print(dfInput.loc[ap, flag_finalFile_Ship] + " MISSED AAQS IN PORT FOR DG1")
 		dfInput.loc[ap, flag_finalFile_fuelType_DG02] = commentFlag
 	
-	if dfInput.loc[ap, flag_finalFile_fuelType_DG03] == fuel_flag_MGO:
+	if dfInput.loc[ap, flag_finalFile_fuelType_DG03] == fuel_flag_MGO and \
+		dfInput.loc[ap, flag_finalFile_DG3_LoadPercent] > lowLoadMgoOnlyNoMissedAAQSOpportunityBelowThisLoad:
 		# print(dfInput.loc[ap, flag_finalFile_Ship] + " MISSED AAQS IN PORT FOR DG3")
 		dfInput.loc[ap, flag_finalFile_fuelType_DG03] = commentFlag
 	
-	if dfInput.loc[ap, flag_finalFile_fuelType_DG04] == fuel_flag_MGO:
+	if dfInput.loc[ap, flag_finalFile_fuelType_DG04] == fuel_flag_MGO and \
+		dfInput.loc[ap, flag_finalFile_DG4_LoadPercent] > lowLoadMgoOnlyNoMissedAAQSOpportunityBelowThisLoad:
 		# print(dfInput.loc[ap, flag_finalFile_Ship] + " MISSED AAQS IN PORT FOR DG4")
 		dfInput.loc[ap, flag_finalFile_fuelType_DG04] = commentFlag
 	
-	if dfInput.loc[ap, flag_finalFile_fuelType_DG05] == fuel_flag_MGO:
+	if dfInput.loc[ap, flag_finalFile_fuelType_DG05] == fuel_flag_MGO and \
+		dfInput.loc[ap, flag_finalFile_DG5_LoadPercent] > lowLoadMgoOnlyNoMissedAAQSOpportunityBelowThisLoad:
 		# print(dfInput.loc[ap, flag_finalFile_Ship] + " MISSED AAQS IN PORT FOR DG5")
 		dfInput.loc[ap, flag_finalFile_fuelType_DG05] = commentFlag
 	
-	if dfInput.loc[ap, flag_finalFile_fuelType_DG06] == fuel_flag_MGO:
+	if dfInput.loc[ap, flag_finalFile_fuelType_DG06] == fuel_flag_MGO  and \
+		dfInput.loc[ap, flag_finalFile_DG6_LoadPercent] > lowLoadMgoOnlyNoMissedAAQSOpportunityBelowThisLoad:
 		# print(dfInput.loc[ap, flag_finalFile_Ship] + " MISSED AAQS IN PORT FOR DG6")
 		dfInput.loc[ap, flag_finalFile_fuelType_DG06] = commentFlag
 	
@@ -5479,7 +5504,7 @@ def func_createSubDataframeForPbiCurveComparisonModel(
 			# 	dfSubset[flag_finalFile_AvgPwrDemandOverTime][
 			# 		(dfSubset[flag_finalFile_Date] >= dfFinal.loc[ap + shipCnt*initialIndex - 1, flag_finalFile_Date]) &
 			# 		(dfSubset[flag_finalFile_Date] < dfFinal.loc[ap + shipCnt*initialIndex, flag_finalFile_Date])
-			# 		].mean()
+			# 		].mean()astype
 
 	for thisUniqueShip in dfFinal[flag_finalFile_Ship].unique():
 		print("rolling average for ship: " + thisUniqueShip)
@@ -5682,7 +5707,7 @@ def func_adjustMandatoryProcessStepsIfRequested(
 				dict_mandatoryForNewData_fillMissedAAQSOpportunitiesDuringPortStay[analysisType] = 1
 				dict_mandatoryForNewData_fillMissedAAQSOpportunitiesDuringNavigation[analysisType] = 1
 				dict_mandatoryForNewData_fillChangeOverTimesBeforeAfterArrivalInNoAAQSPorts[analysisType] = 1
-				dict_mandatoryForNewData_FillReasonsForOutOfOrder[analysisType] = 1
+				# dict_mandatoryForNewData_FillReasonsForOutOfOrder[analysisType] = 1
 		
 		if dict_MASTER_WHAT_TO_DO["master_analyseData_LayUp"] == 1:
 				dict_mandatoryForNewData_fixDataAndFillSpeedGaps[analysisType] = 1
@@ -5744,8 +5769,8 @@ def f_loopThroughSailingTimeAndCheckForMissedScrubberUsage(
 	area_CI_Fuerte_Lanzarote = path.Path(np.array(npa_territorialWaters_Lat_Long_Fuerte_Lanzarote))
 	
 	for ap in dfInput.index:
-		if dfInput.loc[ap, flag_finalFile_Ship] == 'Costa Fascinosa':
-			continue
+		# if dfInput.loc[ap, flag_finalFile_Ship] == 'Costa Fascinosa':
+		# 	continue
 		
 		if dfInput.loc[ap, flag_finalFile_SOG] <= 0.1:
 			continue
@@ -5898,8 +5923,10 @@ def func_PERFECT_AAQS_run(
 	scrubberEnginesRunningUsing_HFO
 ):
 	# PERFECT >> all AAQS are up and running, no possibility to improve BUT: we could check engine load to find further improvement
-	if scrubberEnginesRunningUsing_HFO == scrubberAvailable or \
+	if \
+		scrubberEnginesRunningUsing_HFO == scrubberAvailable or \
 		scrubberEnginesRunningUsing_HFO == totalEnginesRunning:
+
 		dfInput.loc[ap, flag_finalFile_AAQS_AssessmentDone] = flag_AAQS_Usage_Assessment_PERFECT
 		return True, dfInput
 	
@@ -6037,11 +6064,15 @@ def f_getAmountOfEnginesRunningWithAndWithoutAAQS(
 def func_eraseDataInEachSingleShipFile():
 	if ERASE_ALL_DATA_AFTER_CERTAIN_DATE_InEachShipFile_LayUpPBI:
 		filesToBeTreated = filedialog.askopenfilenames(
-			initialdir="C:\\Users\\500095\\Desktop\\Lay Up Energy Monitoring\\02_FinalFiles\\SHIP_FILES")
+			# initialdir="C:\\Users\\500095\\Desktop\\Lay Up Energy Monitoring\\02_FinalFiles\\SHIP_FILES"
+			initialdir="E:\\001_CMG\\Lay Up Energy Monitoring\\02_FinalFiles\\SHIP_FILES"
+		)
 	 # ERASE_ALL_DATA_AFTER_CERTAIN_DATE_InEachShipFile_AAQS_PBI
 	else:
 		filesToBeTreated = filedialog.askopenfilenames(
-			initialdir="C:\\Users\\500095\\Desktop\\AAQS_FullTransparency\\Python_Code\\02_AAQS_FinalFiles\\SHIP_FILES")
+			# initialdir="C:\\Users\\500095\\Desktop\\AAQS_FullTransparency\\Python_Code\\02_AAQS_FinalFiles\\SHIP_FILES"
+			initialdir="E:\\001_CMG\\AAQS_FullTransparency\\02_AAQS_FinalFiles\\SHIP_FILES"
+		)
 	
 	# erase_allDataIncludingThisDay = datetime.datetime(2020, 11, 17, 0, 0, 0)
 	
@@ -6457,7 +6488,7 @@ if dict_MASTER_WHAT_TO_DO["master_prepareRawData"] == 1:
 	#region loop through dataframe and work on data ship by ship
 	for thisUniqueShip in dfSourceData[flag_NeptuneLab_Ship].unique():
 		
-		# if thisUniqueShip != "A-BE":
+		# if thisUniqueShip != "C-TO":
 		# 	continue
 		
 		# if thisUniqueShip != "C-ME":

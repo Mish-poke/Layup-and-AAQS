@@ -4,69 +4,106 @@ import time
 # ######################################################################################################################
 
 # region individual ships
-# dict_analyseTheseShips = {
-# 	"AIDAaura": 				0
-# 	,"AIDAcara": 				0
-# 	,"AIDAvita": 				0
-# 	,"AIDAdiva": 				0
-# 	,"AIDAluna": 				0
-# 	,"AIDAmar": 				0
-# 	,"AIDAbella": 				0
-# 	,"AIDAblu": 				0
-# 	,"AIDAsol": 				0
-# 	,"AIDAstella": 			0
-# 	,"AIDAprima": 				0
-# 	,"AIDAperla": 				0
-# 	,"AIDAnova": 				0
-# 	,"Costa Atlantica": 		0
-# 	,"Costa Deliziosa": 		0
-# 	,"Costa Diadema": 		1
-# 	,"Costa Fascinosa": 		0
-# 	,"Costa Favolosa": 		0
-# 	,"Costa Fortuna": 		0
-# 	,"Costa Luminosa": 		0
-# 	,"Costa Magica": 			0
-# 	,"Costa Mediterranea": 	0
-# 	,"Costa Pacifica": 		0
-# 	,"Costa Serena": 			0
-# 	,"Costa Venezia": 		0
-# 	,"Costa Smeralda": 		0
-# }
+dict_analyseTheseShips = {
+	"AIDAaura": 			0
+	,"AIDAcara": 			0
+	,"AIDAvita": 			0
+	,"AIDAdiva": 			0
+	,"AIDAluna": 			0
+	,"AIDAmar": 			0
+	,"AIDAbella": 			0
+	,"AIDAblu": 			1
+	,"AIDAsol": 			0
+	,"AIDAstella": 			0
+	,"AIDAprima": 			0
+	,"AIDAperla": 			0
+	,"AIDAnova": 			0
+	, "Costa Atlantica": 	0
+	, "Costa Deliziosa": 	0
+	, "Costa Diadema": 		0
+	, "Costa Fascinosa": 	0
+	, "Costa Favolosa": 	0
+	, "Costa Fortuna": 		0
+	, "Costa Luminosa": 	0
+	, "Costa Magica": 		0
+	, "Costa Mediterranea": 0
+	, "Costa Pacifica": 	0
+	, "Costa Serena": 		0
+	, "Costa Smeralda": 	0
+	, "Costa Toscana": 		0
+	, "Costa Firenze": 		0
+	, "Costa Venezia": 		0
+}
 # endregion
 
 # region FULL AIDA FLEET
 # dict_analyseTheseShips = {
-# 	"AIDAaura": 				1
-# 	,"AIDAcara": 				1
-# 	,"AIDAvita": 				1
-# 	,"AIDAdiva": 				1
-# 	,"AIDAluna": 				1
-# 	,"AIDAmar": 				1
-# 	,"AIDAbella": 				1
-# 	,"AIDAblu": 				1
-# 	,"AIDAsol": 				1
+# 	"AIDAaura": 			1
+# 	,"AIDAcara": 			1
+# 	,"AIDAvita": 			1
+# 	,"AIDAdiva": 			1
+# 	,"AIDAluna": 			1
+# 	,"AIDAmar": 			1
+# 	,"AIDAbella": 			1
+# 	,"AIDAblu": 			1
+# 	,"AIDAsol": 			1
 # 	,"AIDAstella": 			1
-# 	,"AIDAprima": 				1
-# 	,"AIDAperla": 				1
-# 	,"AIDAnova": 				1
-# 	,"Costa Atlantica": 		0
-# 	,"Costa Deliziosa": 		0
-# 	,"Costa Diadema": 		0
-# 	,"Costa Fascinosa": 		0
-# 	,"Costa Favolosa": 		0
-# 	,"Costa Fortuna": 		0
-# 	,"Costa Luminosa": 		0
-# 	,"Costa Magica": 			0
-# 	,"Costa Mediterranea": 	0
-# 	,"Costa Pacifica": 		0
-# 	,"Costa Serena": 			0
-# 	,"Costa Venezia": 		0
-# 	,"Costa Smeralda": 		0
+# 	,"AIDAprima": 			1
+# 	,"AIDAperla": 			1
+# 	,"AIDAnova": 			1
+# 	, "Costa Atlantica": 	0
+# 	, "Costa Deliziosa": 	0
+# 	, "Costa Diadema": 		0
+# 	, "Costa Fascinosa": 	0
+# 	, "Costa Favolosa": 	0
+# 	, "Costa Fortuna": 		0
+# 	, "Costa Luminosa": 	0
+# 	, "Costa Magica": 		0
+# 	, "Costa Mediterranea": 0
+# 	, "Costa Pacifica": 	0
+# 	, "Costa Serena": 		0
+# 	, "Costa Smeralda": 	0
+# 	, "Costa Toscana": 		0
+# 	, "Costa Firenze": 		0
+# 	, "Costa Venezia": 		0
 # }
 # endregion
 
 # region FULL Costa FLEET
 # dict_analyseTheseShips = {
+# 	"AIDAaura": 			0
+# 	,"AIDAcara": 			0
+# 	,"AIDAvita": 			0
+# 	,"AIDAdiva": 			0
+# 	,"AIDAluna": 			0
+# 	,"AIDAmar": 			0
+# 	,"AIDAbella": 			0
+# 	,"AIDAblu": 			0
+# 	,"AIDAsol": 			0
+# 	,"AIDAstella": 			0
+# 	,"AIDAprima": 			0
+# 	,"AIDAperla": 			0
+# 	,"AIDAnova": 			0
+# 	,"Costa Atlantica": 	1
+# 	,"Costa Deliziosa": 	0 # no data for DE since Jun 2020
+#  	,"Costa Diadema": 		1
+# 	,"Costa Fascinosa": 	1
+# 	,"Costa Favolosa": 		1
+# 	,"Costa Fortuna": 		1
+# 	,"Costa Luminosa": 		1
+# 	,"Costa Magica": 		1
+# 	,"Costa Mediterranea": 	1
+# 	,"Costa Pacifica": 		1
+# 	,"Costa Serena": 		1
+# 	,"Costa Smeralda": 		1
+# 	,"Costa Toscana": 		0 # no data yet
+# 	,"Costa Firenze": 		1
+# 	,"Costa Venezia": 		1
+# }
+# endregion
+
+# region FULL AIDA AND COSTA FLEET
+# dict_analyseTheseShips = {
 # 	"AIDAaura": 				0
 # 	,"AIDAcara": 				0
 # 	,"AIDAvita": 				0
@@ -74,57 +111,28 @@ import time
 # 	,"AIDAluna": 				0
 # 	,"AIDAmar": 				0
 # 	,"AIDAbella": 				0
-# 	,"AIDAblu": 				0
-# 	,"AIDAsol": 				0
-# 	,"AIDAstella": 			0
-# 	,"AIDAprima": 				0
-# 	,"AIDAperla": 				0
+# 	,"AIDAblu": 				1
+# 	,"AIDAsol": 				1
+# 	,"AIDAstella": 				0
+# 	,"AIDAprima": 				1
+# 	,"AIDAperla": 				1
 # 	,"AIDAnova": 				0
 # 	,"Costa Atlantica": 		1
-# 	,"Costa Deliziosa": 		1
-# 	,"Costa Diadema": 		1
+# 	,"Costa Deliziosa": 		0 # no data for DE since Jun 2020
+# 	,"Costa Diadema": 			1
 # 	,"Costa Fascinosa": 		1
-# 	,"Costa Favolosa": 		1
-# 	,"Costa Fortuna": 		1
-# 	,"Costa Luminosa": 		1
+# 	,"Costa Favolosa": 			1
+# 	,"Costa Fortuna": 			1
+# 	,"Costa Luminosa": 			1
 # 	,"Costa Magica": 			1
-# 	,"Costa Mediterranea": 	1
-# 	,"Costa Pacifica": 		1
+# 	,"Costa Mediterranea": 		1
+# 	,"Costa Pacifica": 			1
 # 	,"Costa Serena": 			1
-# 	,"Costa Venezia": 		1
-# 	,"Costa Smeralda": 		1
+# 	,"Costa Smeralda": 			1
+# 	,"Costa Toscana": 			0 # no data yet
+# 	,"Costa Firenze": 			1
+# 	,"Costa Venezia": 			1
 # }
-# endregion
-
-# region FULL AIDA AND COSTA FLEET
-dict_analyseTheseShips = {
-	"AIDAaura": 				1
-	,"AIDAcara": 				1
-	,"AIDAvita": 				1
-	,"AIDAdiva": 				1
-	,"AIDAluna": 				1
-	,"AIDAmar": 				1
-	,"AIDAbella": 				1
-	,"AIDAblu": 				1
-	,"AIDAsol": 				1
-	,"AIDAstella": 			1
-	,"AIDAprima": 				1
-	,"AIDAperla": 				1
-	,"AIDAnova": 				1
-	,"Costa Atlantica": 		1
-	,"Costa Deliziosa": 		1
-	,"Costa Diadema": 		1
-	,"Costa Fascinosa": 		1
-	,"Costa Favolosa": 		1
-	,"Costa Fortuna": 		1
-	,"Costa Luminosa": 		1
-	,"Costa Magica": 			1
-	,"Costa Mediterranea": 	1
-	,"Costa Pacifica": 		1
-	,"Costa Serena": 			1
-	,"Costa Venezia": 		1
-	,"Costa Smeralda": 		1
-}
 # endregion
 
 
@@ -137,9 +145,11 @@ useBrandSplit = False
 # masterFile_AIDA = r'C:\Users\500095\Desktop\AAQS_FullTransparency\Final_AAQS_Files\__DAILY_AAQS_AIDA_TF_5.0.xlsx'
 # masterFile_Costa = r'C:\Users\500095\Desktop\AAQS_FullTransparency\Final_AAQS_Files\__DAILY_AAQS_Costa_TF_5.0.xlsx'
 
-masterFile_AAQS_ALL_XLS = r'C:\Users\500095\Desktop\AAQS_FullTransparency\Python_Code\02_AAQS_FinalFiles\PBI_DAILY_AAQS.xlsx'
+# masterFile_AAQS_ALL_XLS = r'C:\Users\500095\Desktop\AAQS_FullTransparency\Python_Code\02_AAQS_FinalFiles\PBI_DAILY_AAQS.xlsx'
+masterFile_AAQS_ALL_XLS = r'E:\001_CMG\AAQS_FullTransparency\02_AAQS_FinalFiles\PBI_DAILY_AAQS.xlsx'
 
-masterFile_AAQS_ALL_csv = r'C:\Users\500095\Desktop\AAQS_FullTransparency\Python_Code\02_AAQS_FinalFiles\PBI_DAILY_AAQS.csv'
+# masterFile_AAQS_ALL_csv = r'C:\Users\500095\Desktop\AAQS_FullTransparency\Python_Code\02_AAQS_FinalFiles\PBI_DAILY_AAQS.csv'
+masterFile_AAQS_ALL_csv = r'E:\001_CMG\AAQS_FullTransparency\02_AAQS_FinalFiles\PBI_DAILY_AAQS.csv'
 
 dummyTestFile_AAQS =      r'C:\Users\500095\Desktop\AAQS_FullTransparency\Python_Code\02_AAQS_FinalFiles\__TEST_FILE.xlsx'
 # endregion
@@ -467,7 +477,9 @@ dict_shipShortCodesToLongNames = dict(
 		('C-PA', 'Costa Pacifica'),
 		('C-SE', 'Costa Serena'),
 		('C-ME', 'Costa Smeralda'),
-		('C-VZ', 'Costa Venezia')
+		('C-TO', 'Costa Toscana'),
+		('C-VZ', 'Costa Venezia'),
+		('C-FI', 'Costa Firenze')
 	]
 )
 
@@ -499,38 +511,42 @@ dict_shipShortCodesToLongNames_LayUp = dict(
 		('PA', 'Costa Pacifica'),
 		('SE', 'Costa Serena'),
 		('ME', 'Costa Smeralda'),
-		('VZ', 'Costa Venezia')
+		('TO', 'Costa Toscana'),
+		('VZ', 'Costa Venezia'),
+		('FI', 'Costa Firenze')
 	]
 )
 
 dict_Ship_MaxPowerOfEngines = {  # E1, ..., En
  	"AIDAaura": [8700, 8700, 5800, 4350, -1, -1],   # Aida Aura / information provided by Thomas Piller
 	"AIDAcara": [2960, 2960, 2960, -1, -1, -1],   # AIDAcara ... data not approved // 5430 for main engine 2960 for port power engine
-   "AIDAvita": [8700, 8700, 5800, 4350, -1, -1],   # Aida Vita / information provided by Thomas Piller
+   	"AIDAvita": [8700, 8700, 5800, 4350, -1, -1],   # Aida Vita / information provided by Thomas Piller
 	"AIDAbella": [9000, 9000, 9000, 9000, -1, -1],   # Aida Bella / information provided by  Elkan
 	"AIDAdiva": [9000, 9000, 9000, 9000, -1, -1],  # Aida Diva / information provided by Elkan
 	"AIDAluna": [9000, 9000, 9000, 9000, -1, -1],  # Aida Luna / information provided by  Elkan
 	"AIDAblu": [9000, 9000, 9000, 9000, -1, -1],  # Aida Blu / information provided by  Elkan
 	"AIDAsol": [9000, 9000, 9000, 9000, -1, -1],  # AIDAsol / information provided by  Elkan
-   "AIDAmar": [9000, 9000, 9000, 9000, -1, -1],  # Aida Mar / information provided by Elkan
+   	"AIDAmar": [9000, 9000, 9000, 9000, -1, -1],  # Aida Mar / information provided by Elkan
 	"AIDAstella": [9000, 9000, 9000, 9000, -1, -1],  # Aida Stella / information provided by Elkan
 	"AIDAprima": [12000, 12000, 12000, 12000, -1, -1],  # Aida Prima / information provided by Elkan
-   "AIDAperla": [12000, 12000, 12000, 12000, -1, -1],  # Aida Perla / information provided by Elkan
-   "AIDAnova": [15440, 15440, 15440, 15440, -1, -1],  # Aida Nova / information provided by  Elkan
+   	"AIDAperla": [12000, 12000, 12000, 12000, -1, -1],  # Aida Perla / information provided by Elkan
+   	"AIDAnova": [15440, 15440, 15440, 15440, -1, -1],  # Aida Nova / information provided by  Elkan
 	"AIDAmira"  : [], # Aida Mira
-   "Costa Magica": [11520, 8640, 11520, 11520, 8640, 11520],    # Costa Magica
-   "Costa Fortuna": [11520, 8640, 11520, 11520, 8640, 11520],    # Costa Fortuna
-   "Costa Atlantica": [10300, 10300, 10300, 10300, 10300, 10300],  # Costa Atlantica
-   "Costa Mediterranea": [10300, 10300, 10300, 10300, 10300, 10300],  # Costa Mediterranea
-   "Costa Serena": [12600, 12600, 12600, 12600, 12600, 12600],  # Costa Serena
-   "Costa Pacifica": [12600, 12600, 12600, 12600, 12600, 12600],  # Costa Pacifica
-   "Costa Favolosa": [12600, 12600, 12600, 12600, 12600, 12600],  # Costa Favolosa
-   "Costa Fascinosa": [12600, 12600, 12600, 12600, 12600, 12600],  # Costa Fascinosa
-   "Costa Diadema": [12600, 8400, 12600, 12600, 8400, 12600],  # Costa Diadema / information provided by Elkan
-   "Costa Smeralda": [15440, 15440, 15440, 15440, -1, -1],  # Costa Smeralda / information provided by Elkan
+   	"Costa Magica": [11520, 8640, 11520, 11520, 8640, 11520],    # Costa Magica
+   	"Costa Fortuna": [11520, 8640, 11520, 11520, 8640, 11520],    # Costa Fortuna
+   	"Costa Atlantica": [10300, 10300, 10300, 10300, 10300, 10300],  # Costa Atlantica
+   	"Costa Mediterranea": [10300, 10300, 10300, 10300, 10300, 10300],  # Costa Mediterranea
+   	"Costa Serena": [12600, 12600, 12600, 12600, 12600, 12600],  # Costa Serena
+   	"Costa Pacifica": [12600, 12600, 12600, 12600, 12600, 12600],  # Costa Pacifica
+   	"Costa Favolosa": [12600, 12600, 12600, 12600, 12600, 12600],  # Costa Favolosa
+   	"Costa Fascinosa": [12600, 12600, 12600, 12600, 12600, 12600],  # Costa Fascinosa
+   	"Costa Diadema": [12600, 8400, 12600, 12600, 8400, 12600],  # Costa Diadema / information provided by Elkan
+   	"Costa Smeralda": [15440, 15440, 15440, 15440, -1, -1],  # Costa Smeralda / information provided by Elkan
+	"Costa Toscana": [15440, 15440, 15440, 15440, -1, -1],  # Costa Smeralda / information provided by Elkan
 	"Costa Luminosa": [12600, 8000, 12600, 12600, 8000, 12600],  # Costa Luminosa / information provided by Elkan
-   "Costa Deliziosa": [12000, 8000, 12000, 12000, 8000, 12000], # Costa Deliziosa / information provided by Elkan
-	"Costa Venezia": [16800, 16800, 9600, 9600, 9600, -1] #
+   	"Costa Deliziosa": [12000, 8000, 12000, 12000, 8000, 12000], # Costa Deliziosa / information provided by Elkan
+	"Costa Venezia": [16800, 16800, 9600, 9600, 9600, -1], #
+	"Costa Firenze": [16800, 16800, 9600, 9600, 9600, -1] #]
 }
 
 dict_shipNamesScrubberIssueFile = dict(
@@ -556,8 +572,9 @@ dict_shipNamesScrubberIssueFile = dict(
 		('Costa Magica', 'Magica'),
 		('Costa Mediterranea', 'Mediterranea'),
 		('Costa Pacifica', 'Pacifica'),
+		('Costa Serena', 'Serena'),
 		('Costa Venezia', 'Venezia'),
-		('Costa Serena', 'Serena')
+		('Costa Firenze', 'Firenze')
 	]
 )
 
@@ -576,18 +593,20 @@ dict_AAQS_engines = {
 	"AIDAperla": [0, 0, 1, 1, -1, -1],
 	"AIDAnova": [0, 0, 0, 0, -1, -1],
 	"Costa Atlantica": [0, 0, 0, 0, 0, 0],#"Costa Atlantica": [0, 0, 1, 1, 0, 1],
-	"Costa Deliziosa": [1, 0, 0, 0, 0, 0],
-	"Costa Diadema": [0, 0, 1, 0, 1, 1],
-	"Costa Fascinosa": [1, 0, 0, 1, 0, 1],
-	"Costa Favolosa": [1, 0, 0, 1, 0, 1],
-	"Costa Fortuna": [0, 0, 0, 0, 0, 0],#[1, 1, 0, 0, 0, 1],
-	"Costa Luminosa": [1, 1, 0, 0, 0, 1],
-	"Costa Mediterranea": [0, 0, 1, 1, 0, 1],
-	"Costa Magica": [1, 1, 0, 0, 0, 1],
-	"Costa Pacifica": [0, 0, 1, 1, 1, 0],
-	"Costa Serena": [0, 1, 0, 1, 0, 1],
+	"Costa Deliziosa": [1, 1, 0, 0, 0, 1],# CHECKED
+	"Costa Diadema": [0, 0, 1, 0, 1, 1], # CHECKED
+	"Costa Fascinosa": [0, 1, 0, 0, 1, 1], #"Costa Fascinosa": [1, 0, 0, 1, 0, 1], ## CORRECTED! damn Neil :(
+	"Costa Favolosa": [1, 0, 0, 1, 0, 1], # CHECKED
+	"Costa Fortuna": [1, 1, 0, 0, 0, 0],#[1, 1, 0, 0, 0, 1],
+	"Costa Luminosa": [1, 1, 0, 0, 0, 1], # CHECKED
+	"Costa Mediterranea": [0, 0, 1, 1, 0, 1], # CHECKED
+	"Costa Magica": [1, 1, 0, 0, 0, 1], # CHECKED
+	"Costa Smeralda": [0, 0, 0, 0, -1, -1],
+	"Costa Toscana": [0, 0, 0, 0, -1, -1],
+	"Costa Pacifica": [0, 0, 1, 1, 1, 0], # CHECKED
+	"Costa Serena": [0, 1, 0, 0, 0, 1], # CHECKED ### DG4 not ready yet
 	"Costa Venezia": [1, 1, 0, 0, 1, -1],
-	"Costa Smeralda": [0, 0, 0, 0, -1, -1]
+	"Costa Firenze": [1, 1, 0, 0, 1, -1]# CHECKED
 }
 
 flag_AAQS_notPortReady = "AAQS NOT PORT READY"
@@ -595,33 +614,35 @@ flag_ENV_Restriction_AAQS_NOT_allowedInThisPort = "AAQS NOT ALLOWED IN THIS PORT
 flag_ENV_Restriction_AAQS_isAllowedInThisPort = "AAQS allowed in this port"
 
 dict_AAQS_available = {
-	"AIDAaura": 				False
-	,"AIDAcara": 				False
+	"AIDAaura": 			False
+	,"AIDAcara": 			False
 	,"AIDAstella": 			False
-	,'AIDAnova': 				False
-	,"Costa Atlantica": 		False
+	,'AIDAnova': 			False
+	,"Costa Atlantica": 	False
 	,"Costa Fortuna": 		False
 	,"Costa neoRomantica": 	False
 	,"Costa Smeralda": 		False
-	,"AIDAvita": 				True
-	,"AIDAbella": 				True
-	,"AIDAluna": 				True
-	,"AIDAdiva": 				True
-	,"AIDAblu": 				True
-	,"AIDAmar": 				True
-	,"AIDAsol": 				True
-	,"AIDAprima": 				True
-	,"AIDAperla": 				True
-	,"Costa Deliziosa": 		True
+	,"Costa Toscana": 		False
+	,"AIDAvita": 			True
+	,"AIDAbella": 			True
+	,"AIDAluna": 			True
+	,"AIDAdiva": 			True
+	,"AIDAblu": 			True
+	,"AIDAmar": 			True
+	,"AIDAsol": 			True
+	,"AIDAprima": 			True
+	,"AIDAperla": 			True
+	,"Costa Deliziosa": 	True
 	,"Costa Diadema": 		True
-	,"Costa Fascinosa": 		True
+	,"Costa Fascinosa": 	True
 	,"Costa Favolosa": 		True
 	,"Costa Luminosa": 		True
 	,"Costa Mediterranea": 	True
-	,"Costa Magica": 			True
+	,"Costa Magica": 		True
 	,"Costa Pacifica":	 	True
-	,"Costa Serena": 			True
+	,"Costa Serena": 		True
 	,"Costa Venezia": 		True
+	,"Costa Firenze": 		True
 }
 
 dic_AAQS_PlannedForPortUsage = {
@@ -634,24 +655,26 @@ dic_AAQS_PlannedForPortUsage = {
 	,"AIDAblu": 				1
 	,"AIDAmar": 				0
 	,"AIDAsol": 				1
-	,"AIDAstella": 			0
+	,"AIDAstella": 				0
 	,"AIDAprima": 				0
 	,"AIDAperla": 				0
 	,'AIDAnova': 				0
 	,"Costa Atlantica": 		0
 	,"Costa Deliziosa": 		1
-	,"Costa Diadema": 		1
+	,"Costa Diadema": 			1
 	,"Costa Fascinosa": 		1
-	,"Costa Favolosa": 		1
-	,"Costa Fortuna": 		0
-	,"Costa Luminosa": 		1
-	,"Costa Mediterranea": 	1
+	,"Costa Favolosa": 			1
+	,"Costa Fortuna": 			0
+	,"Costa Luminosa": 			1
+	,"Costa Mediterranea": 		1
 	,"Costa Magica": 			1
-	,"Costa Pacifica":	 	1
+	,"Costa Pacifica":	 		1
 	,"Costa Serena": 			1
-	,"Costa Venezia": 		1
-	,"Costa neoRomantica": 	0
-	,"Costa Smeralda": 		0
+	,"Costa Venezia": 			1
+	,"Costa Firenze": 			1
+	,"Costa neoRomantica": 		0
+	,"Costa Smeralda": 			0
+	,"Costa Toscana": 			0
 }
 dict_ENV_regulationChange_AllShipsShouldTryAAQSInPort = datetime.datetime(2020, 6, 12, 0, 0, 0)
 
@@ -796,7 +819,8 @@ timeAggregationPeriodInSeconds = 300
 # region PORT DB Structuredict_shipNames
 # sourceFile_ports = r'C:\Users\500095\Desktop\AAQS_FullTransparency\Database\PortDb_LatLong_V02.csv'
 # sourceFile_Non_AAAQS_ports = r'C:\Users\500095\Desktop\AAQS_FullTransparency\Database\PortDb_NO_AAQS_Ports_LatLong_V02.csv'
-masterFile_PORTs = r'C:\Users\500095\Desktop\AAQS_FullTransparency\Database\PORT_DB_MASTER_V02.csv'
+# masterFile_PORTs = r'C:\Users\500095\Desktop\AAQS_FullTransparency\Database\PORT_DB_MASTER_V02.csv'
+masterFile_PORTs = r'E:\001_CMG\AAQS_FullTransparency\Database\PORT_DB_MASTER_V02.csv'
 
 flag_PORTDB_UNPortCode = 'UN-PortCode'
 flag_PortDB_ports_name = 'PortName MXP'
@@ -912,3 +936,6 @@ def func_createDictWithFlags_rhPredictionPerEnginePerDay():
 FS_backToNormalFuelIn2020 = datetime.datetime(2020, 7, 1, 0, 0, 0)
 PA_backToNormalFuelIn2020 = datetime.datetime(2020, 4, 1, 0, 0, 0)
 FA_noMoreAAQSAllowanceInCivi= datetime.datetime(2020, 8, 24, 0, 0, 0)
+FullFleet_noMoreAAQSAllowanceInCivi= datetime.datetime(2021, 5, 3, 0, 0, 0)
+
+lowLoadMgoOnlyNoMissedAAQSOpportunityBelowThisLoad = 23

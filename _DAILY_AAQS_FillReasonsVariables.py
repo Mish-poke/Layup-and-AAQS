@@ -9,8 +9,11 @@ flag_issuesFile_issue = 'Issues Preventing ECA Operation 1'
 flag_issuesFile_Area = 'AREA'
 flag_issuesFile_Comments = 'Comments (free text, if any)'
 
-masterFile_technicalIssues_AIDA = r'C:\Users\500095\Desktop\AAQS_FullTransparency\AAQS_OutOfOrder_Details\EGCS_Status AIDA.xlsx'
-masterFile_technicalIssues_Costa = r'C:\Users\500095\Desktop\AAQS_FullTransparency\AAQS_OutOfOrder_Details\EGCS_Status Costa.xlsx'
+# masterFile_technicalIssues_AIDA = r'C:\Users\500095\Desktop\AAQS_FullTransparency\AAQS_OutOfOrder_Details\EGCS_Status AIDA.xlsx'
+# masterFile_technicalIssues_Costa = r'C:\Users\500095\Desktop\AAQS_FullTransparency\AAQS_OutOfOrder_Details\EGCS_Status Costa.xlsx'
+
+masterFile_technicalIssues_AIDA = r'E:\001_CMG\AAQS_FullTransparency\AAQS_OutOfOrder_Details\EGCS_Status AIDA.xlsx'
+masterFile_technicalIssues_Costa = r'E:\001_CMG\AAQS_FullTransparency\AAQS_OutOfOrder_Details\EGCS_Status Costa.xlsx'
 
 flag_issueArea_Harbour = "Harbour"
 flag_issueArea_See = "See"

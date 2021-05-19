@@ -2,9 +2,13 @@
 
 # ######################################################################################################################
 
-masterFile_LayUp_ALL_csv = r'C:\Users\500095\Desktop\Lay Up Energy Monitoring\02_FinalFiles\PBI_LayUpFinalFile.csv'
-masterFile_LayUp_ALL_PORT_ONLY_DATA_csv = r'C:\Users\500095\Desktop\Lay Up Energy Monitoring\02_FinalFiles\PBI_LayUpFinalFile_PORT_ONLY.csv'
-masterFile_LayUp_ALL_PowerDataForPBICurves = r'C:\Users\500095\Desktop\Lay Up Energy Monitoring\02_FinalFiles\PBI_LayUpFinalFile_PORT_ONLY_PowerOnlyPBICurve.csv'
+# masterFile_LayUp_ALL_csv = r'C:\Users\500095\Desktop\Lay Up Energy Monitoring\02_FinalFiles\PBI_LayUpFinalFile.csv'
+# masterFile_LayUp_ALL_PORT_ONLY_DATA_csv = r'C:\Users\500095\Desktop\Lay Up Energy Monitoring\02_FinalFiles\PBI_LayUpFinalFile_PORT_ONLY.csv'
+# masterFile_LayUp_ALL_PowerDataForPBICurves = r'C:\Users\500095\Desktop\Lay Up Energy Monitoring\02_FinalFiles\PBI_LayUpFinalFile_PORT_ONLY_PowerOnlyPBICurve.csv'
+masterFile_LayUp_ALL_csv = r'E:\001_CMG\Lay Up Energy Monitoring\02_FinalFiles\PBI_LayUpFinalFile.csv'
+masterFile_LayUp_ALL_PORT_ONLY_DATA_csv = r'E:\001_CMG\Lay Up Energy Monitoring\02_FinalFiles\PBI_LayUpFinalFile_PORT_ONLY.csv'
+masterFile_LayUp_ALL_PowerDataForPBICurves = r'E:\001_CMG\Lay Up Energy Monitoring\02_FinalFiles\PBI_LayUpFinalFile_PORT_ONLY_PowerOnlyPBICurve.csv'
+
 PBI_CurveComparison_MinutesForMasterDataframe = 15
 
 
