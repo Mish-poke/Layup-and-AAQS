@@ -9,16 +9,16 @@ dict_analyseTheseShips = {
 	,"AIDAcara": 			0
 	,"AIDAvita": 			0
 	,"AIDAdiva": 			0
-	,"AIDAluna": 			0
+	,"AIDAluna": 			1
 	,"AIDAmar": 			0
 	,"AIDAbella": 			0
-	,"AIDAblu": 			1
+	,"AIDAblu": 			0
 	,"AIDAsol": 			0
 	,"AIDAstella": 			0
 	,"AIDAprima": 			0
 	,"AIDAperla": 			0
 	,"AIDAnova": 			0
-	, "Costa Atlantica": 	0
+	, "Costa Atlantica": 	1
 	, "Costa Deliziosa": 	0
 	, "Costa Diadema": 		0
 	, "Costa Fascinosa": 	0
@@ -26,7 +26,7 @@ dict_analyseTheseShips = {
 	, "Costa Fortuna": 		0
 	, "Costa Luminosa": 	0
 	, "Costa Magica": 		0
-	, "Costa Mediterranea": 0
+	, "Costa Mediterranea": 1
 	, "Costa Pacifica": 	0
 	, "Costa Serena": 		0
 	, "Costa Smeralda": 	0
@@ -108,12 +108,12 @@ dict_analyseTheseShips = {
 # 	,"AIDAcara": 				0
 # 	,"AIDAvita": 				0
 # 	,"AIDAdiva": 				0
-# 	,"AIDAluna": 				0
-# 	,"AIDAmar": 				0
+# 	,"AIDAluna": 				1
+# 	,"AIDAmar": 				1
 # 	,"AIDAbella": 				0
 # 	,"AIDAblu": 				1
 # 	,"AIDAsol": 				1
-# 	,"AIDAstella": 				0
+# 	,"AIDAstella": 				1
 # 	,"AIDAprima": 				1
 # 	,"AIDAperla": 				1
 # 	,"AIDAnova": 				0
@@ -135,6 +135,44 @@ dict_analyseTheseShips = {
 # }
 # endregion
 
+
+dict_fillRawDataForTheseShips = dict(
+	[
+		('A-AU', 0),
+		('A-CA', 0),
+		('A-VT', 0),
+		('A-BE', 0),
+		('A-LN', 0),
+		('A-DV', 0),
+		('A-BL', 0),
+		('A-MR', 0),
+		('A-SL', 0),
+		('A-ST', 0),
+		('A-PM', 0),
+		('A-PL', 0),
+		('A-NV', 0),
+		('C-AT', 1),
+		('C-DE', 0),
+		('C-DI', 0),
+		('C-FA', 0),
+		('C-FS', 0),
+		('C-FO', 0),
+		('C-LU', 0),
+		('C-MG', 0),
+		('C-MD', 1),
+		('C-PA', 0),
+		('C-SE', 0),
+		('C-ME', 0),
+		('C-TO', 0),
+		('C-VZ', 0),
+		('C-FI', 0)
+	]
+)
+
+dict_replaceTheseShortCodes = {
+    "J-AT": "C-AT",
+    "J-MD": "C-MD"
+}
 
 # master flags to toggle between different analysis modes
 masterFlagAnalysisMode_AAQS = "AAQS"
@@ -936,6 +974,6 @@ def func_createDictWithFlags_rhPredictionPerEnginePerDay():
 FS_backToNormalFuelIn2020 = datetime.datetime(2020, 7, 1, 0, 0, 0)
 PA_backToNormalFuelIn2020 = datetime.datetime(2020, 4, 1, 0, 0, 0)
 FA_noMoreAAQSAllowanceInCivi= datetime.datetime(2020, 8, 24, 0, 0, 0)
-FullFleet_noMoreAAQSAllowanceInCivi= datetime.datetime(2021, 5, 3, 0, 0, 0)
+FullFleet_noMoreAAQSAllowanceInCivi= datetime.datetime(2021, 5, 9, 0, 0, 0)
 
 lowLoadMgoOnlyNoMissedAAQSOpportunityBelowThisLoad = 23

@@ -31,6 +31,7 @@ import time
 import numpy as np
 from matplotlib import path
 from playsound import playsound
+import downcast
 
 from _DAILY_AAQS_Variables import *
 from _CM_Include import *
@@ -54,9 +55,10 @@ EngineRunningHours_Alternate_rhPrediction_Versions = 2
 printMinMaxDateValuePerShip_NOTHING_ELSE = 0
 extractShipFiles_NOTHING_ELSE = 0
 
-create_FINAL_FILE_AAQS_NOTHING_ELSE = 0
-create_FINAL_FILE_LayUp_NOTHING_ELSE = 1
-create_FINAL_FILE_LayUp_NOTHING_ELSE_including_averagesForPBI = 1
+create_FINAL_FILE_AAQS_NOTHING_ELSE = 1
+create_FINAL_FILE_LayUp_NOTHING_ELSE = 0
+create_FINAL_FILE_LayUp_NOTHING_ELSE_including_averagesForPBI = 1 # can be set to 0. will only be used if variable above was used
+cutAllDataBeforeThisDate = datetime.datetime(2020, 3, 1, 0, 0, 0)
 
 # this date defines the starting point for the calculation of the power demand averages.
 # from time to time we can be increased a bit to save some calculation time
@@ -71,7 +73,7 @@ addColumnWithPortName_NOTHING_ELSE = 0
 
 ERASE_ALL_DATA_AFTER_CERTAIN_DATE_InEachShipFile_LayUpPBI = 0
 ERASE_ALL_DATA_AFTER_CERTAIN_DATE_InEachShipFile_AAQS_PBI = 0
-erase_allDataIncludingThisDay = datetime.datetime(2020, 11, 20, 0, 0, 0)
+erase_allDataIncludingThisDay = datetime.datetime(2021, 7, 21, 0, 0, 0)
 #endregion
 
 #region create new pbi file for curve comparison based on two files
@@ -267,7 +269,7 @@ dict_ERASE_ALL_PREVIOUS_DriftingAnchorageData = {
 firstTimeTick = datetime.datetime(1970, 1, 1, 0, 0, 0)
 noDriftOrAnchorageBeforeThatDate = datetime.datetime(2020, 2, 1, 0, 0, 0)
 
-
+digitsNeeded = 2
 
 # endregion
 # ######################################################################################################################
@@ -507,7 +509,15 @@ def func_readAllShipFilesInThisFolder(
 		
 		df1 = df1.reset_index(drop=True)
 	# endregion
-	
+
+	df1[flag_finalFile_Date] = pd.to_datetime(df1[flag_finalFile_Date])
+
+	if create_FINAL_FILE_LayUp_NOTHING_ELSE or create_FINAL_FILE_AAQS_NOTHING_ELSE:
+		print("LEN ALL DATA BEFORE DATE FILTER: " + str(df1.shape[0]))
+		df1 = df1[df1[flag_finalFile_Date] >= cutAllDataBeforeThisDate]
+		print("LEN ALL DATA AFTER DATE FILTER: " + str(df1.shape[0]))
+		df1 = df1.reset_index(drop=True)
+
 	startTime = f_doTheTimeMeasurementInThisFunction(startTime, flag_timeEnd, inspect.stack()[0][3])
 	
 	return df1
@@ -529,6 +539,7 @@ def f_loopAllFilesInThisFolderAndCreateNewSumFile(
 	useFilePicker = True
 	# region LOOP Files and bring the together in one dataframe
 	if useFilePicker:
+		#region loop all files and aggregate data to new df
 		for subFile in filesToBeTreated:
 			print("read " + subFile)
 			
@@ -549,7 +560,8 @@ def f_loopAllFilesInThisFolderAndCreateNewSumFile(
 				df2 = func_prepareColumnStructureAndAddSignalTagColumn(df2)
 				
 				df1 = pd.concat([df1, df2])
-		
+		#endregion
+
 		df1 = func_replaceColumnNamesIfNeeded(df1)
 		
 		df1[flag_finalFile_Date] = pd.to_datetime(df1[flag_finalFile_Date])
@@ -557,15 +569,60 @@ def f_loopAllFilesInThisFolderAndCreateNewSumFile(
 		df1 = df1.round(decimals=4)
 		
 		if dict_rawDataStructure["sourceDataStructure_PBI_preparedColumns"] == 1:
-			df1 = df1.sort_values([flag_finalFile_Ship, flag_finalFile_Date],
-										 ascending=[True, True])
+			df1 = df1.sort_values(
+				[flag_finalFile_Ship, flag_finalFile_Date],
+				ascending=[True, True]
+			)
 		else:
-			df1 = df1.sort_values([flag_finalFile_Ship, flag_finalFile_Date, flag_NeptuneLab_combinedFlags],
-										 ascending=[True, True, True])
-		
+			df1 = df1.sort_values(
+				[flag_finalFile_Ship, flag_finalFile_Date, flag_NeptuneLab_combinedFlags],
+				ascending=[True, True, True]
+			)
+
+		if flag_finalFile_Ship in df1.columns.unique():
+			for thisShortCode in dict_replaceTheseShortCodes:
+				print("replace ship short code: " + thisShortCode + " with " + dict_replaceTheseShortCodes[thisShortCode])
+				df1.loc[df1[flag_finalFile_Ship] == thisShortCode, flag_finalFile_Ship] = dict_replaceTheseShortCodes[thisShortCode]
+
 		df1 = df1.reset_index(drop=True)
 	#endregion
-	
+
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_SOG, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_STW, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_Temperature, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_Humidity, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_timestampsPerHour, digitsNeeded)
+
+
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG1_ACTIVE_POWER, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG2_ACTIVE_POWER, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG3_ACTIVE_POWER, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG4_ACTIVE_POWER, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG5_ACTIVE_POWER, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG6_ACTIVE_POWER, digitsNeeded)
+
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG1_FUEL_OIL_IN_TE, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG2_FUEL_OIL_IN_TE, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG3_FUEL_OIL_IN_TE, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG4_FUEL_OIL_IN_TE, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG5_FUEL_OIL_IN_TE, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG6_FUEL_OIL_IN_TE, digitsNeeded)
+
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG1_DeSOx_FLOW, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG2_DeSOx_FLOW, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG3_DeSOx_FLOW, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG4_DeSOx_FLOW, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG5_DeSOx_FLOW, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG6_DeSOx_FLOW, digitsNeeded)
+
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG1_DeSOx_PumpPWR, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG2_DeSOx_PumpPWR, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG3_DeSOx_PumpPWR, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG4_DeSOx_PumpPWR, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG5_DeSOx_PumpPWR, digitsNeeded)
+	df1 = f_downSizeThisColumn(df1, flag_finalFile_DG6_DeSOx_PumpPWR, digitsNeeded)
+
+
 	startTime = f_doTheTimeMeasurementInThisFunction(startTime, flag_timeEnd, inspect.stack()[0][3])
 	
 	return (df1)
@@ -663,7 +720,7 @@ def f_createNewAndEmptyDataframeWithPreparedTimeSlices(
 		
 		#ap = 0
 		#thisTime = minTimeStamp
-		#while thisTime < maxTimeStamp:
+		#while thisTime < maxTimeStamp:drop
 		#	ap += 1
 		#	thisTime = thisTime + timedelta(seconds=timeAggregationPeriodInSeconds)
 		#	dfFinal = dfFinal.append({flag_finalFile_Date: thisTime}, ignore_index=True)
@@ -3327,8 +3384,6 @@ def func_getThisEngineAndFueltypeSFOC(
 	if \
 		flag_fuelType == fuel_flag_HFO or \
 		flag_fuelType == fuel_flag_VLSFO:
-		# 	=-0,0004059*POWER(A2;3) + 0,07729 *POWER(A2;2) - 4,914 *A2 + 321,1
-		# sfoc = 220
 		sfoc = \
 			-0.0001252 * pow(flag_LoadPercent, 3) + \
 			0.03754 * pow(flag_LoadPercent, 2) - \
@@ -3338,8 +3393,6 @@ def func_getThisEngineAndFueltypeSFOC(
 		# print("HFO/VLSFO SFOC:" + str(sfoc))
 	
 	if flag_fuelType == fuel_flag_MGO:
-		# 	=-0,00008347*POWER(A2;3) + 0,02777*POWER(A2;2) - 2,757 * A2 + 277,6
-		# sfoc = 210
 		sfoc = \
 			-0.00008347 * pow(flag_LoadPercent, 3) + \
 			0.02777 * pow(flag_LoadPercent, 2) - \
@@ -3356,10 +3409,6 @@ def func_getThisEngineAndFueltypeSFOC(
 			1.871 * pow(flag_LoadPercent, 2) + \
 			-47.44 * pow(flag_LoadPercent, 1) + \
 			+ 650.1
-		
-		# print("LNG SFOC:" + str(sfoc))
-		
-		# sfoc = 172
 		
 	return sfoc
 
@@ -4140,10 +4189,12 @@ def f_addTimeStampsPerHour(
 	dfInput,
 	doTheAnalysisForOneShipOnly
 ):
-	f_makeThePrintNiceStructured(True, "### Fill amount of datapoints per hour ", inspect.stack()[0][3])
+	f_makeThePrintNiceStructured(True, "### Fill amount of datapoints per hour for: " + useOnlyThisShip, inspect.stack()[0][3])
 	startTime = time
 	startTime = f_doTheTimeMeasurementInThisFunction(startTime, flag_timeStart, inspect.stack()[0][3])
-	
+
+	# dfInput = dfInput.reset_index(drop=True)
+
 	if flag_finalFile_timestampsPerHour in dfInput.columns:
 		dfInput[flag_finalFile_timestampsPerHour] = dfInput[flag_finalFile_timestampsPerHour].astype(float)
 	else:
@@ -5523,7 +5574,6 @@ def func_createSubDataframeForPbiCurveComparisonModel(
 	
 	return dfFinal
 
-
 # ######################################################################################################################
 def func_replaceAllDotsForCommaInFinalCSVForThePBI(
 	dfInput
@@ -6490,10 +6540,13 @@ if dict_MASTER_WHAT_TO_DO["master_prepareRawData"] == 1:
 		
 		# if thisUniqueShip != "C-TO":
 		# 	continue
-		
-		# if thisUniqueShip != "C-ME":
+
+		# if thisUniqueShip != "C-FS":
 		# 	continue
-		
+
+		if dict_fillRawDataForTheseShips[thisUniqueShip] == 0:
+			continue
+
 		print("thisUniqueShip: " + thisUniqueShip)
 		
 		if dict_PREPARE_RAW_DATA_FOR___['DATA_APPROACH_AAQS_DAILY'] == 1:
@@ -6520,7 +6573,9 @@ if dict_MASTER_WHAT_TO_DO["master_prepareRawData"] == 1:
 		useOnlyThisShip = thisShipLongName
 		
 		dfSubDatasetForThisShip = dfSourceData[dfSourceData[flag_NeptuneLab_Ship] == thisUniqueShip]
-		
+
+		dfSubDatasetForThisShip = dfSubDatasetForThisShip.reset_index(drop=True)
+
 		if \
 			dict_rawDataStructure["sourceDataStructure_neptuneLab_RawData"] == 1 or \
 			dict_rawDataStructure["sourceDataStructure_neptuneLab_preparedAverages"] == 1:

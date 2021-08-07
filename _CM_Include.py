@@ -2,6 +2,7 @@
 
 import datetime
 import time
+import pandas as pd
 # ######################################################################################################################
 
 flag_timeStart = 'FunctionTimeMeasurementStart'
@@ -10,6 +11,17 @@ flag_timeEnd = 'FunctionTimeMeasurementEnd'
 # ### DEBUG VARs ##############
 FORCE_fullDebugAllComments = False
 avoidAnyComments = False
+
+' #####################################################################################################################'
+def f_downSizeThisColumn(thisDF, thisSignal, roundMe = -1):
+    if thisSignal in thisDF.columns:
+        thisDF[thisSignal] = \
+                pd.to_numeric(thisDF[thisSignal], downcast ='float')
+
+        if roundMe >= 0:
+            thisDF[thisSignal] = thisDF[thisSignal].round(roundMe)
+
+    return thisDF
 
 # ######################################################################################################################
 def f_makeThePrintNiceStructured(
